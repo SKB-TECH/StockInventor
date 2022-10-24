@@ -9,4 +9,4 @@ CREATE TABLE product (
     dateExperation TIMESTAMP DEFAULT NOW()
 );
 
-INSERT INTO product('designation','price','quantity','imageProduct') VALUES('Biscuit',120,20,'biscuit.png');
+INSERT INTO product(designation,price,quantity,imageProduct) VALUES('Biscuit',120,20,'biscuit.png');
