@@ -1,46 +1,40 @@
-const createError = require('http-errors');
 const express = require('express');
+const dotenv = require('dotenv')
+const morgan = require('morgan');
+const bodyParse = require('body-parser')
 const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan')
-const productRouter = require('./routes/product.route')
+const RouterProduct = require('./routes/product.route')
+// const connectDB = require('./Server/database/connection')
 
-const app = express()
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+const app = express();
 
+//appele du dossier contenant notre variable d'environnemet PORT
+dotenv.config({ path: "./config.env" })
+// const PORT = process.env.PORT || 8080
 
-app.use(express.json());
-app.use(logger("dev"))
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, './public/stylesheets')));
+//les i(nfos des requetes
+app.use(morgan('tiny'))
 
-app.use('/', indexRouter);
-app.use('/product', productRouter);
+//connect to database
+// connectDB();
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
+//convertion des requete en format Json
+app.use(bodyParse.urlencoded({ extended: true }));
 
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// determination du moteur de visualisation ejs sur le projet
+app.set('view engine', 'ejs')
+//le lien contenant les fichies ej
+//app.set('view',path.resolve(__dirname,'/views/ejs'))
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+//disponibiliser les ressources du sites (style css,img,js)
+app.use('/css', express.static(path.resolve(__dirname, './public/css')))
+app.use('/img', express.static(path.resolve(__dirname, './public/javascript')))
+app.use('/js', express.static(path.resolve(__dirname, './public/images')))
+
+// les routes
+app.use('/product', RouterProduct)
 
 
-app.listen(4200, (error) => {
-  if (!error) {
-    console.log("Server running on port 4200")
-  }
+app.listen(4200, () => {
+  console.log(`Pret au port  http://localhost`);
 })
