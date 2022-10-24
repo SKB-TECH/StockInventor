@@ -23,6 +23,8 @@ app.use(bodyParse.urlencoded({ extended: true }));
 
 // determination du moteur de visualisation ejs sur le projet
 app.set('view engine', 'ejs')
+app.set('views')
+
 //le lien contenant les fichies ej
 //app.set('view',path.resolve(__dirname,'/views/ejs'))
 

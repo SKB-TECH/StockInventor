@@ -4,12 +4,33 @@
 @tailwind utilities;
 
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin : 0;
+  font: 16px "Ubuntu", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+.flex{
+  display : flex;
+}
+.flex-col{
+  flex-direction : column;
+}
+
+.bg-black1 {
+  background-color : #4D5254;
+}
+
+.text-white{
+  color : white;
+}
+
+.main-container{
+  margin : 0;
+  padding : 0;
+  height : 100vh;
 }
 
 ;
