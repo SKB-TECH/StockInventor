@@ -26,8 +26,8 @@ app.set('views')
 
 //disponibiliser les ressources du sites (style css,img,js)
 app.use('/css', express.static(path.resolve(__dirname, './public/css')))
-app.use('/img', express.static(path.resolve(__dirname, './public/javascript')))
-app.use('/js', express.static(path.resolve(__dirname, './public/images')))
+app.use('/images', express.static(path.resolve(__dirname, './public/images')))
+app.use('/js', express.static(path.resolve(__dirname, './public/javascript')))
 
 // les routes
 app.use(require('./routes/product.route'))
