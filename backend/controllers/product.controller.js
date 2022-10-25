@@ -1,7 +1,4 @@
-
 const { Pool } = require('pg');
-
-
 /* connection with the database */
 const pool = new Pool({
     host: 'localhost',
@@ -44,4 +41,26 @@ exports.delete_product = async (req, res) => {
     res.render('main');
 };
 
+exports.createProduct = (req, res) => {
+    try {
+        pool.connect(async (error, client, release) => {
+            let resp = await client.query(`INSERT INTO test (name) VALUES('${req.body.add}')`)
+            release()
+            res.redirect('/info/get')
+        })
+    } catch (err) {
+        console.log(err)
+    }
+}
 
+exports.deleteProduct = (req, res, next) => {
+    try {
+        pool.connect(async (error, client, release) => {
+            let resp = await client.query(`DELETE FROM test WHERE name = ('${req.body.delete}')`)
+            release()
+            res.redirect('/product/get')
+        })
+    } catch (err) {
+        console.log(err)
+    }
+}
