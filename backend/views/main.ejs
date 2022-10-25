@@ -13,8 +13,19 @@
 <body>
   <div class=" flex bg-black1 text-white main-container ">
     <%- include('./includes/left_menu'); %>
-      <div class=" p-20 ">
+      <div class="flex flex-col gap-6  p-20 ">
         <%- include('./includes/header'); %>
+          <div class=" flex flex-wrap gap-5 ">
+            <%- include('./includes/product_card');%>
+              <%- include('./includes/product_card');%>
+                <%- include('./includes/product_card');%>
+                  <%- include('./includes/product_card');%>
+                    <%- include('./includes/product_card');%>
+                      <%- include('./includes/product_card');%>
+                        <%- include('./includes/product_card');%>
+
+
+          </div>
       </div>
   </div>
 </body>
