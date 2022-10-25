@@ -2,9 +2,9 @@ const { Pool } = require('pg');
 /* connection with the database */
 const pool = new Pool({
     host: 'localhost',
-    user: 'joshcrud',
+    user: 'benjamin',
     database: 'magasin',
-    password: '0108'
+    password: '1234'
 });
 
 exports.getProduct = async (req, res) => {
@@ -14,11 +14,11 @@ exports.getProduct = async (req, res) => {
 
 // Nouveau produit
 exports.creatProduct = async (req, res) => {
-    const { designation, price, quantity, imageProduct } = req.body;
-    const response = await pool.query('INSERT INTO product (designation, price,quantity,imageProduct) VALUES ($1, $2, $3, $4)', [designation, price, quantity, imageProduct]);
+    const { designation, price, quantity, imageproduct } = req.body;
+    const response = await pool.query('INSERT INTO product (designation, price,quantity,imageProduct) VALUES ($1, $2, $3, $4)', [designation, price, quantity, imageproduct]);
 
     console.log(response.rows);
-    res.status(200).render('main', { data: response.rows });
+    res.status(200).render('Add_product');
 };
 
 // get by id
