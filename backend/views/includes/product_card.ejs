@@ -9,15 +9,16 @@
 
   <body>
     <% for(let i=0;i<data.length;i++){%>
+      <!-- #region -->
     <div class="object-fill rounded-2xl">
       <img
         class="w-[12vw] h-[10vw] rounded-t-2xl"
-        src=<%= console.log(data[i]?.imageproduct); %> 
+        src=<%= data[i].imageproduct %> 
         alt=""
       />
       <div class="flex justify-between">
         <div>
-          <p><%= data[i].designation %></p>
+          <p><% console.log("images "+ image); %></p>
           <p>$<%= data[i].price %></p>
         </div>
         <div class="flex">
