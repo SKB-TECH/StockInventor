@@ -20,22 +20,19 @@ app.use(bodyParse.urlencoded({ extended: true }));
 
 // determination du moteur de visualisation ejs sur le projet
 app.set('view engine', 'ejs')
+
 app.set('views')
-
-//le lien contenant les fichies ej
-//app.set('view',path.resolve(__dirname,'/views/ejs'))
-
 
 
 //disponibiliser les ressources du sites (style css,img,js)
 app.use('/css', express.static(path.resolve(__dirname, './public/css')))
-app.use('/img', express.static(path.resolve(__dirname, './public/javascript')))
-app.use('/js', express.static(path.resolve(__dirname, './public/images')))
+app.use('/images', express.static(path.resolve(__dirname, './public/images')))
+app.use('/js', express.static(path.resolve(__dirname, './public/javascript')))
 
 // les routes
 app.use(require('./routes/product.route'))
 
 
 app.listen(4200, () => {
-  console.log(`Pret au port  http://localhost`);
+  console.log(`Pret au port  http://localhost:4200`);
 })
