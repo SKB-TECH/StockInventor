@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS product;
 CREATE TABLE product (
    idProduct SERIAL PRIMARY KEY,
