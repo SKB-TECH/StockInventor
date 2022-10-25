@@ -2,9 +2,9 @@ const { Pool } = require('pg');
 /* connection with the database */
 const pool = new Pool({
     host: 'localhost',
-    user: 'benjamin',
+    user: 'joshcrud',
     database: 'magasin',
-    password: '1234'
+    password: '0108'
 });
 
 exports.getProduct = async (req, res) => {
@@ -63,4 +63,12 @@ exports.deleteProduct = (req, res, next) => {
     } catch (err) {
         console.log(err)
     }
+}
+
+exports.add_product = (req, res) => {
+    res.render('Add_product')
+}
+
+exports.update_product_page = (req, res) => {
+    res.render('Update_product')
 }
