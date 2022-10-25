@@ -1,18 +1,47 @@
 
-exports.Main = (req, res, next) => {
-    res.render('main')
-}
+const { Pool } = require('pg');
 
 
-exports.createProduct = (req, res, next) => {
+/* connection with the database */
+const pool = new Pool({
+    host: 'localhost',
+    user: 'benjamin',
+    database: 'magasin',
+    password: '1234'
+});
 
-}
+exports.getProduct = async (req, res) => {
+    const response = await pool.query('SELECT * FROM product');
+    res.render('main', { data: response.rows });
+};
 
-exports.updateProduct = (req, res, next) => {
+// Nouveau produit
+exports.creatProduct = async (req, res) => {
+    const { designation, price, quantity, imageProduct } = req.body;
+    const response = await pool.query('INSERT INTO product (designation, price,quantity,imageProduct) VALUES ($1, $2, $3, $4)', [designation, price, quantity, imageProduct]);
 
-}
+    console.log(response.rows);
+    res.render('main', { data: response.rows });
+};
 
-exports.deleteProduct = (req, res, next) => {
+// get by id
+exports.getuserbyid = async (req, res) => {
+    const id = req.params.id;
+    const response = await pool.query('SELECT * FROM product WHERE idproduct = $1', [id]);
+    res.render('main', { data: response.rows[0] });
+};
 
-}
+exports.update_product = async (req, res) => {
+    const id = req.params.id;
+    const { designation, price, quantity, imageProduct } = req.body;
+    const response = await pool.query('UPDATE product SET deasignation= $1, price = $2, quantity = $3, imageProduct= $4 WHERE idproduct= $5', [designation, price, quantity, imageProduct, id]);
+    res.render('main');
+};
+
+exports.delete_product = async (req, res) => {
+    const id = req.params.id;
+    const response = await pool.query('DELETE FROM product WHERE idproduct= $1', [id]);
+    res.render('main');
+};
+
 
