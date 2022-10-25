@@ -9,7 +9,7 @@ const RouterProduct = require('./routes/product.route')
 const app = express();
 
 //appele du dossier contenant notre variable d'environnemet PORT
-dotenv.config({ path: "./config.env" })
+dotenv.config({ path: "./config/.env" })
 
 app.use(morgan('tiny'))
 
