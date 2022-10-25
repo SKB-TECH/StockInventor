@@ -21,6 +21,9 @@ app.use(bodyParse.urlencoded({ extended: true }));
 // determination du moteur de visualisation ejs sur le projet
 app.set('view engine', 'ejs')
 
+app.set('views')
+
+
 //disponibiliser les ressources du sites (style css,img,js)
 app.use('/css', express.static(path.resolve(__dirname, './public/css')))
 app.use('/img', express.static(path.resolve(__dirname, './public/javascript')))
