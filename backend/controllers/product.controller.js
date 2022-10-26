@@ -9,23 +9,21 @@ const pool = new Pool({
 
 exports.getProduct = async (req, res) => {
     const response = await pool.query('SELECT * FROM product');
-    res.status(200).render('main', { data: response.rows });
+    res.render('main', { data: response.rows });
 };
 
 // Nouveau produit
 exports.creatProduct = async (req, res) => {
     const { designation, price, quantity, imageproduct } = req.body;
     const response = await pool.query('INSERT INTO product (designation, price,quantity,imageProduct) VALUES ($1, $2, $3, $4)', [designation, price, quantity, imageproduct]);
-
-    console.log(response.rows);
-    res.status(200).render('Add_product');
+    res.render('/')
 };
 
 // get by id
 exports.getProductbyid = async (req, res) => {
     const id = req.params.id;
     const response = await pool.query('SELECT * FROM product WHERE idproduct = $1', [id]);
-    res.status(200).render('Update_product', { data: response.rows });
+    res.render('Update_product', { data: response.rows });
 
 };
 
