@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form
+      action="/product/new_product"
+      method="POST"
+      class="flex flex-col gap-2"
+      action=""
+    >
+      <p>Name :</p>
+      <input class="text-black" type="text" name="designation" />
+      <p>Price :</p>
+      <input class="text-black" type="number" name="price" />
+      <p>Quantity :</p>
+      <input class="text-black" type="number" name="quantity" />
+      <p>Image :</p>
+      <input
+        class="text-black"
+        type="text"
+        placeholder="le chemin de l'image"
+        name="imageproduct"
+      />
+      <button type="submit" class="w-20 h-10 rounded-lg bg-green-500">
+        UPDATE
+      </button>
+    </form>
+  </body>
+</html>
