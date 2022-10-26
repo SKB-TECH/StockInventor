@@ -22,10 +22,10 @@ exports.creatProduct = async (req, res) => {
 };
 
 // get by id
-exports.getuserbyid = async (req, res) => {
+exports.getProductbyid = async (req, res) => {
     const id = req.params.id;
     const response = await pool.query('SELECT * FROM product WHERE idproduct = $1', [id]);
-    res.status(200).render('main', { data: response.rows[0] });
+    res.status(200).render('Update_product', { data: response.rows[0] });
 };
 
 exports.update_product = async (req, res) => {
@@ -38,7 +38,7 @@ exports.update_product = async (req, res) => {
 exports.delete_product = async (req, res) => {
     const id = req.params.id;
     const response = await pool.query('DELETE FROM product WHERE idproduct= $1', [id]);
-    res.status(200).render('main');
+    res.redirect('/');
 };
 
 
