@@ -2,9 +2,9 @@ const { Pool } = require('pg');
 /* connection with the database */
 const pool = new Pool({
     host: 'localhost',
-    user: 'benjamin',
+    user: 'joshcrud',
     database: 'magasin',
-    password: '1234'
+    password: '0108'
 });
 
 exports.getProduct = async (req, res) => {
