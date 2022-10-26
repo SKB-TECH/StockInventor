@@ -7,7 +7,7 @@ const { getProductbyid, update_product_page, add_product, getProduct, creatProdu
 router.get('/', getProduct);
 router.get('/product/getOneProduct/:id', getProductbyid)
 router.post('/product/new_product', creatProduct);
-router.put('/product/update/:id', update_product);
+router.post('/product/update/:id', update_product);
 router.get('/product/addproduct', add_product);
 router.get('/product/update_product_page', update_product_page);
 router.get('/product/delete/:id', delete_product);

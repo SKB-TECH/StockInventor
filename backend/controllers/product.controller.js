@@ -2,9 +2,9 @@ const { Pool } = require('pg');
 /* connection with the database */
 const pool = new Pool({
     host: 'localhost',
-    user: 'joshcrud',
+    user: 'benjamin',
     database: 'magasin',
-    password: '0108'
+    password: '1234'
 });
 
 exports.getProduct = async (req, res) => {
@@ -25,15 +25,15 @@ exports.creatProduct = async (req, res) => {
 exports.getProductbyid = async (req, res) => {
     const id = req.params.id;
     const response = await pool.query('SELECT * FROM product WHERE idproduct = $1', [id]);
-    res.status(200).render('Update_product', { data: response.rows[0] });
+    res.status(200).render('Update_product', { data: response.rows });
 
 };
 
 exports.update_product = async (req, res) => {
     const id = req.params.id;
-    const { designation, price, quantity, imageProduct } = req.body;
-    const response = await pool.query('UPDATE product SET designation= $1, price = $2, quantity = $3, imageProduct= $4 WHERE idproduct= $5', [designation, price, quantity, imageProduct, id]);
-    res.status(200).render('main');
+    const { designation, price, quantity, imageproduct } = req.body;
+    const response = await pool.query('UPDATE product SET designation= $1, price = $2, quantity = $3, imageproduct= $4 WHERE idproduct= $5', [designation, price, quantity, imageproduct, id]);
+    res.redirect('/');
 };
 
 exports.delete_product = async (req, res) => {
