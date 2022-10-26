@@ -8,28 +8,20 @@
   </head>
 
   <body>
-    <form
-      action="/product/new_product"
-      method="POST"
-      class="flex flex-col gap-2"
-      action=""
-    >
+    <% for(let i=0;i<data.length;i++){%>
+    <form action="/product/update/<%= data[i].idproduct %> " method="POST"class="flex flex-col gap-2">
       <p>Name :</p>
-      <input class="text-black" type="text" name="designation" />
+      <input class="text-black" type="text" name="designation" value="<%= data[i].designation %>" />
       <p>Price :</p>
-      <input class="text-black" type="number" name="price" />
+      <input class="text-black" type="number" name="price" value="<%= data[i].price %>"/>
       <p>Quantity :</p>
-      <input class="text-black" type="number" name="quantity" />
+      <input class="text-black" type="number" name="quantity" value="<%= data[i].quantity %>" />
       <p>Image :</p>
-      <input
-        class="text-black"
-        type="text"
-        placeholder="le chemin de l'image"
-        name="imageproduct"
-      />
+      <input class="text-black" type="text" name="imageproduct" value="<%= data[i].imageproduct %>" />
       <button type="submit" class="w-20 h-10 rounded-lg bg-green-500">
         UPDATE
       </button>
     </form>
+    <% } %> 
   </body>
 </html>
