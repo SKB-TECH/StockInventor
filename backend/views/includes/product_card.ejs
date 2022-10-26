@@ -23,7 +23,7 @@
           <p>$<%= data[i].price %></p>
         </div>
         <div class="flex">
-          <a href="">
+          <a href="/product/getOneProduct/<%= data[i].idproduct %>">
             <svg
               class="w-12"
               version="1.1"
@@ -65,7 +65,7 @@
               </g>
             </svg>
           </a>
-          <a href="/product/delete/?id<%= data[i].idproduct %>" id="">
+          <a href="/product/delete/<%= data[i].idproduct %>" id="">
             <svg
               class="w-12"
               version="1.1"
